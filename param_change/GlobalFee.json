@@ -1,0 +1,12 @@
+{
+    "title": "MinimumGasPricesParam Change",
+    "description": "add juno minimum fee",
+    "changes": [
+      {
+        "subspace": "globalfee",
+        "key": "MinimumGasPricesParam",
+        "value": [{"denom":"ujuno","amount":"0.002500000000000000"}]
+      }
+    ],
+    "deposit": "1000000ujuno"
+}
