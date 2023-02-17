@@ -1,0 +1,12 @@
+{
+    "title": "Add TokenFactory ujunox",
+    "description": "Add TokenFactory ujunox to the chain",
+    "changes": [
+      {
+        "subspace": "tokenfactory",
+        "key": "DenomCreationFee",
+        "value": [{"denom":"ujunox","amount":"1000000"}]
+      }
+    ],
+    "deposit": "500000000ujunox"
+}

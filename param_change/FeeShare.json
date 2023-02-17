@@ -1,0 +1,12 @@
+{
+    "title": "Update allowed feeshare denom payments",
+    "description": "Adds ujunox to the list of allowed feeshare denom payments",
+    "changes": [
+      {
+        "subspace": "feeshare",
+        "key": "AllowedDenoms",
+        "value": ["ujuno", "ujunox"]
+      }
+    ],
+    "deposit": "500000000ujunox"
+}
