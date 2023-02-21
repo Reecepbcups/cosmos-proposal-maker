@@ -8,10 +8,10 @@ Easily make a proposal for a network, shrinking the markdown to a single line fo
 VOTE_OPTIONS = """
 ## Voting Options
 
-YES: Agree to proceed with the Juno v12 upgrade and stop governance spam with the deposit requirement.
-NO: Disagree with the v12 upgrade and the deposit requirement.
-NO WITH VETO: Disagree with the upgrade and want depositors penalized.
-ABSTAIN: Decline to give an opinion on the upgrade.
+YES: Agree to proceed with the funding for interchain info.
+NO: Disagree with the funding for interchain info.
+NO WITH VETO: Disagree with the funding for interchain info and want depositors penalized.
+ABSTAIN: Decline to give an opinion on the funding.
 
 """
 

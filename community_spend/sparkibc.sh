@@ -1,7 +1,11 @@
 # Example in Juno, will convert to gaia for actual proposal
 
+# change to gaiad and use node https://rpc.cosmoshub.strange.love:443
+
 export JUNOD_NODE="http://localhost:26657"
 FLAGS="--from juno1 --keyring-backend test --node $JUNOD_NODE --chain-id local-1 --home /home/reece/.juno1/ --gas 1000000 --broadcast-mode block"
+
+junod tx bank send juno1 juno1efd63aw40lxf3n4mhf7dzhjkr453axurv2zdzk 100000ujuno $FLAGS --fees 5000ujuno --yes
 
 junod tx gov submit-proposal community-pool-spend community_spend/sparkibc_comm_spend.json $FLAGS
 
