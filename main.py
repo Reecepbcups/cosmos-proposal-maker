@@ -71,6 +71,9 @@ With this, public relayers will be able to earn fees in the future with these tr
 {VOTE_OPTIONS}
 """
 
+print(proposal_text)
+exit(1)
+
 # replace res new lines to the \n character
 res = proposal_text.replace("\n", "\\n")
 # res = res.replace("'", "\\'") # I do not think we need to do this? does this break text props?
