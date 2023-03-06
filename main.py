@@ -9,16 +9,17 @@ VOTE_OPTIONS = """
 ## Voting Options
 
 YES: Agree to proceed with Juno v13 network upgrade.
+
 NO: Disagree with the Juno v13 network upgrade.
+
 NO WITH VETO: Disagree with the Juno v13 network upgrade and want depositors penalized.
+
 ABSTAIN: Decline to give an opinion on the Juno v13 network upgrade.
 
 """
 
 proposal_text = f"""
 # Juno v13 Upgrade
-
-[Original Medium Article Post](https://medium.com/@reecepbcups/juno-v12-update-4bab64640a62)
 
 This network upgrade brings the following changes to Juno Network:
 
@@ -43,11 +44,11 @@ This module helps incentivize developers to build on Juno Network and bring new 
 ## x/TokenFactory Module
 
 This module allows anyone to create a native token on Juno Network. This drastically increases the UX and UI of the networks utility tokens. As a developer, it also removes the need to support both native assets and CW20 in your contracts.
-DAOs/SubDAOs can control a contract which mints tokens for other business logic in your contracts through our [TokenFactory Middleware Contract](https://github.com/CosmosContracts/tokenfactory-contracts).
+DAOs/SubDAOs can control a contract which mints tokens for other business logic in your contracts through our [TokenFactory Middleware Contracts](https://github.com/CosmosContracts/tokenfactory-contracts).
 
 ## CosmWasm v0.30
 
-You can read all of the great features in x/wasmd v0.30.0 in Confio's [medium article here](https://medium.com/cosmwasm/wasmd-0-30-released-8e9932929238).
+You can read all of the great features in x/wasmd v0.30.0 in [Confio's medium article here](https://medium.com/cosmwasm/wasmd-0-30-released-8e9932929238).
 
 ## Packet Forward Middleware
 
@@ -60,11 +61,11 @@ With this, public relayers will be able to earn fees in the future with these tr
 - Complete overhaul of the main app for easier upgradeability
 - ICA Host and Controller
 - Allow all ICA messages
-- Latest IAVL, Tendermint, and Cosmos SDK (v0.45)
-- `junod debug bech32-convert`
-- `junod debug export-derive-balances`
-- `junod debug forceprune`
-- `junod reset [app|wasm]` directory files
+- Latest IAVL, Tendermint, and Cosmos SDK (v0.45.14)
+- junod debug bech32-convert
+- junod debug export-derive-balances
+- junod debug forceprune
+- junod reset [app|wasm] directory files
 
 
 {VOTE_OPTIONS}
@@ -75,6 +76,7 @@ res = proposal_text.replace("\n", "\\n")
 # res = res.replace("'", "\\'") # I do not think we need to do this? does this break text props?
 res = res.replace("’", "'")  # when you copy paste from the web
 res = res.replace('"', '\\"')
+res = res.replace("`", "'")  # can not do ` or else linux tries to run it in the CMD
 res = res.replace("    ", "\\t")  # tabs
 print("=" * 20)
 
