@@ -8,71 +8,30 @@ Easily make a proposal for a network, shrinking the markdown to a single line fo
 VOTE_OPTIONS = """
 ## Voting Options
 
-YES: Agree to proceed with Juno v13 network upgrade.
+YES: Agree to proceed with increasing block gas to 100 million (from 10 million).
 
-NO: Disagree with the Juno v13 network upgrade.
+NO: Disagree with the increase of block gas to 100 million.
 
-NO WITH VETO: Disagree with the Juno v13 network upgrade and want depositors penalized.
+NO WITH VETO: Disagree with the increase of block gas to 100 million and want depositors penalized.
 
-ABSTAIN: Decline to give an opinion on the Juno v13 network upgrade.
+ABSTAIN: Decline to give an opinion on the increase of block gas.
 
 """
 
 proposal_text = f"""
-# Juno v13 Upgrade
+# Increase Per Block Gas
 
-This network upgrade brings the following changes to Juno Network:
+[Commonwealth Discussion](https://commonwealth.im/juno/discussion/10396-increase-maximum-per-block-gas-to-100-million)
 
-- x/FeeShare Module
-- x/TokenFactory Module
-- CosmWasm v0.30
-- IBC v4
-- Packet Forward Middleware
+Previously in [Juno proposal 6](https://www.mintscan.io/juno/proposals/6), the team lowered per block gas to 10 million *(from 100 million)* to stop potential attacks against the network. Since then, we have tested on our testnet (Uni-6) and have confirmed these attacks are no longer possible after the v13 upgrade. With this, the chain is now safe to increase back to 100 million gas per block.
 
-Due to deterministic issues with the oracle module on our testnet, it has been pushed to v14 or later.
+This has been a major pain point for many projects including NFTs (minting), DeFi, CW20 migrations, and oracle data submissions. With this change, it allows more complex logic to be built on Juno and provide a better user experience, as well as increasing the number of possible transactions per block.
 
----
-
-## x/FeeShare Module
-
-This module's addition was passed in [Juno Proposal 51](https://www.mintscan.io/juno/proposals/51)
-
-If you're a smart contract developer on Juno, you can now earn a cut of all gas fees generated on your contract. Initially this is set to 50% of all gas fees which interact with your contract directly. 
-Governance at any time can change this percentage to any value between 0% and 100%, add new tokens to be paid in (ex; USDC, OSMO, etc), or toggle this feature entirely.
-This module helps incentivize developers to build on Juno Network and bring new business models that are not directly DeFi related.
-
-## x/TokenFactory Module
-
-This module allows anyone to create a native token on Juno Network. This drastically increases the UX and UI of the networks utility tokens. As a developer, it also removes the need to support both native assets and CW20 in your contracts.
-DAOs/SubDAOs can control a contract which mints tokens for other business logic in your contracts through our [TokenFactory Middleware Contracts](https://github.com/CosmosContracts/tokenfactory-contracts).
-
-## CosmWasm v0.30
-
-You can read all of the great features in x/wasmd v0.30.0 in [Confio's medium article here](https://medium.com/cosmwasm/wasmd-0-30-released-8e9932929238).
-
-## Packet Forward Middleware
-
-This new middleware allows for the forwarding of IBC packets through Juno's infrastructure to final destination chains. As cosmos zones expand, the need for multi-hop transactions will increase for scaling. 
-This new module allows for Juno to be a "relay" chain for other zones. Where a newly launched chain can just focus on relaying to and from Juno, and in return can route these packets to all the zones Juno is connected too. 
-With this, public relayers will be able to earn fees in the future with these transactions along with the [ICS29 IBCFees module added in this update](https://github.com/cosmos/ibc-go/tree/main/docs/middleware/ics29-fee).
-
-## Other Changes
-
-- Complete overhaul of the main app for easier upgradeability
-- ICA Host and Controller
-- Allow all ICA messages
-- Latest IAVL, Tendermint, and Cosmos SDK (v0.45.14)
-- junod debug bech32-convert
-- junod debug export-derive-balances
-- junod debug forceprune
-- junod reset [app|wasm] directory files
+**NOTE** The transaction size limit will remain at 22,020,096 bytes per block (22Mb). We have not had any need or requests to alter this.
 
 
 {VOTE_OPTIONS}
 """
-
-print(proposal_text)
-exit(1)
 
 # replace res new lines to the \n character
 res = proposal_text.replace("\n", "\\n")

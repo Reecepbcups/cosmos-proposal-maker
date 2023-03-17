@@ -1,10 +1,11 @@
-JUNOD_NODE="http://localhost:26657"
-KEY="juno1"
-KEYRING="test"
-CHAIN_ID="local-1"
+JUNOD_NODE="https://juno-rpc.reece.sh:443"
+KEY="reece"
+KEYRING="os"
+CHAIN_ID="juno-1"
 
 FLAGS="--from $KEY --keyring-backend $KEYRING --chain-id $CHAIN_ID --node $JUNOD_NODE --broadcast-mode block --gas=1000000"
 
+# does it need  --deposit 200000ujuno ?
 junod tx gov submit-proposal param-change param_change/BlockGas.json $FLAGS
 
-junod tx gov vote 1 yes $FLAGS --yes
+junod tx gov vote 99999 yes $FLAGS

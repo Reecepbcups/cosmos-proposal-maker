@@ -1,0 +1,12 @@
+{
+    "title": "Increase maximum per block gas to 100 million",
+    "description": "# Increase Per Block Gas\n\n[Commonwealth Discussion](https://commonwealth.im/juno/discussion/10396-increase-maximum-per-block-gas-to-100-million)\n\nPreviously in [Juno proposal 6](https://www.mintscan.io/juno/proposals/6), the team lowered per block gas to 10 million *(from 100 million)* to stop potential attacks against the network. Since then, we have tested on our testnet (Uni-6) and have confirmed these attacks are no longer possible after the v13 upgrade. With this, the chain is now safe to increase back to 100 million gas per block.\n\nThis has been a major pain point for many projects including NFTs (minting), DeFi, CW20 migrations, and oracle data submissions. With this change, it allows more complex logic to be built on Juno and provide a better user experience, as well as increasing the number of possible transactions per block.\n\n**NOTE** The transaction size limit will remain at 22,020,096 bytes per block (22Mb). We have not had any need or requests to alter this.\n\n\n\n## Voting Options\n\nYES: Agree to proceed with increasing block gas to 100 million (from 10 million).\n\nNO: Disagree with the increase of block gas to 100 million.\n\nNO WITH VETO: Disagree with the increase of block gas to 100 million and want depositors penalized.\n\nABSTAIN: Decline to give an opinion on the increase of block gas.\n\n",
+    "changes": [
+      {
+        "subspace": "baseapp",
+        "key": "BlockParams",
+        "value": {"max_gas":"100000000"}
+      }
+    ],
+    "deposit": "2000000ujuno"
+}
