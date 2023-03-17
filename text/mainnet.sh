@@ -10,4 +10,4 @@ DESCRIPTION="# Skip Tendermint By Default in Juno\n\n[Commonwealth Discussion](h
 
 junod tx gov submit-proposal --type="text" --title="$TITLE" --description="$DESCRIPTION" $FLAGS --deposit=200000000ujuno
 
-junod tx gov vote 999 yes $FLAGS --yes
+junod tx gov vote 275 yes $FLAGS --yes
