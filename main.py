@@ -1,6 +1,8 @@
 """
 Reece Williams (reece.sh) | 2023
 Easily make a proposal for a network, shrinking the markdown to a single line for the description.
+
+||| Test this with: https://markdownlivepreview.com/ |||
 """
 
 # =====
@@ -8,27 +10,68 @@ Easily make a proposal for a network, shrinking the markdown to a single line fo
 VOTE_OPTIONS = """
 ## Voting Options
 
-YES: Agree to proceed with increasing block gas to 100 million (from 10 million).
+YES: Agree to proceed with Juno v14 network upgrade.
 
-NO: Disagree with the increase of block gas to 100 million.
+NO: Disagree with the Juno v14 network upgrade.
 
-NO WITH VETO: Disagree with the increase of block gas to 100 million and want depositors penalized.
+NO WITH VETO: Disagree with the Juno v14 network upgrade and want depositors penalized.
 
-ABSTAIN: Decline to give an opinion on the increase of block gas.
+ABSTAIN: Decline to give an opinion on the Juno v14 network upgrade.
 
 """
 
 proposal_text = f"""
-# Increase Per Block Gas
+# Juno v14 Upgrade
 
-[Commonwealth Discussion](https://commonwealth.im/juno/discussion/10396-increase-maximum-per-block-gas-to-100-million)
+This network upgrade brings the following major changes to Juno Network:
+- GlobalFee Module
+- IBCHooks Module
+- Stargate Staking Queries
+- Tokenfactory: ForceTransfer, MintTo, and BurnFrom (admin only)
+- x/wasmd 0.31
+- wasmvm 1.2.1
 
-Previously in [Juno proposal 6](https://www.mintscan.io/juno/proposals/6), the team lowered per block gas to 10 million *(from 100 million)* to stop potential attacks against the network. Since then, we have tested on our testnet (Uni-6) and have confirmed these attacks are no longer possible after the v13 upgrade. With this, the chain is now safe to increase back to 100 million gas per block.
+## x/GlobalFee Module
 
-This has been a major pain point for many projects including NFTs (minting), DeFi, CW20 migrations, and oracle data submissions. With this change, it allows more complex logic to be built on Juno and provide a better user experience, as well as increasing the number of possible transactions per block.
+[Signaling proposal from December 13th, 2022: PASSED](https://www.mintscan.io/juno/proposals/68)
 
-**NOTE** The transaction size limit will remain at 22,020,096 bytes per block (22Mb). We have not had any need or requests to alter this.
+Currently on cosmos based chains, the validators are fully in control of the network fees. With this new module, a minimum gas fee is set by governance to set the gas floor.
 
+At the upgrade, gas fees are set to our [setup documentation gas prices default](https://docs.junonetwork.io/validators/joining-mainnet#set-minimum-gas-prices):
+- 0.0025ujuno
+- 0.001uatom (ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9)
+
+At any time, governance can increase these fees across the network to help deliver more for developers (through feeshare) and stakers. It can also add new tokens to be accepted as fees, such as OSMO and/or USDC in the future.
+If an transaction attack occurs on Juno, validators are still able to raise their fees ABOVE the minimum gas fee to protect the network as needed.
+
+The only exception to this are bypassed messages for IBC relaying and transfers. These messages are exempt from the minimum gas fee within reasonable limits. For this to work, validators **must** set their fees to be: `0ujuno,0ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9` in their app.toml. No other denoms can be accepted UNLESS governance passes a proposal to do so.
+
+## x/IBCHooks Module
+
+This [module from the osmosis team](https://github.com/osmosis-labs/osmosis/tree/main/x/ibc-hooks) allows for token transfers (of the [ICS-20 spec](https://github.com/cosmos/ibc/tree/main/spec/app/ics-020-fungible-token-transfer) ) to call contracts cross chain. The primary importantance of this is allowing cross chain swaps. 
+
+## x/wasmd 0.31 & wasmv 1.2.1
+
+[Wasmd 0.31 Confio Article](https://medium.com/cosmwasm/wasmd-v0-31-0-released-a2e2ed440148)
+[wasmvm 1.2.1 Confio Article](https://medium.com/cosmwasm/cosmwasm-1-2-5f10f4f653ea)
+
+The main feature from this update which many development teams have requested is instantiate2 to replicate a contract with predictable addresses. You can find an example of this with the [virus contract example](https://github.com/CosmWasm/cosmwasm/tree/v1.2.1/contracts/virus). Some other notable improvements include:
+- Governance based weighted votes
+- new queries from wasmvm 1.2 (add the cosmwasm_1_2 feature in your contract toml)
+- Uint128/Decimal multiplication
+- A new 'Never' type
+
+## New Token Factory Methods
+
+From the previous upgrade, v13, we added the x/TokenFactory module to deliver a better UX for developers and users alike. As the admin of a token denomination you can now Force transfer tokens between accounts, Mint directly to an account, and burn from another account. In the future we will also add support for disabling the sending of tokens, and only allowing minting/burning for specific application needs.
+
+## Stargate Staking Queries
+
+Contracts can now query the chain for an accounts: Delegation, Redelegations, and Unbonding information.
+
+---
+
+[Full v14.0.0 changelog can be found here](https://github.com/CosmosContracts/juno/releases/tag/v14.0.0-alpha.1)
 
 {VOTE_OPTIONS}
 """
