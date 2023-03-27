@@ -71,7 +71,7 @@ Contracts can now query the chain for an accounts: Delegation, Redelegations, an
 
 ---
 
-[Full v14.0.0 changelog can be found here](https://github.com/CosmosContracts/juno/releases/tag/v14.0.0-alpha.1)
+[Full v14.0.0 changelog can be found here](https://github.com/CosmosContracts/juno/releases)
 
 {VOTE_OPTIONS}
 """
