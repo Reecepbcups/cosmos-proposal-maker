@@ -10,6 +10,7 @@ Easily make a proposal for a network, shrinking the markdown to a single line fo
 # =====
 
 UPGRADE_NAME = "v14"
+UPGRADE_HUMAN_NAME = "Aurora"
 
 VOTE_OPTIONS = f"""
 ## Voting Options
@@ -25,15 +26,19 @@ ABSTAIN: Decline to give an opinion on the Juno {UPGRADE_NAME} network upgrade.
 """
 
 proposal_text = f"""
-# Juno {UPGRADE_NAME} Upgrade
+# Juno {UPGRADE_HUMAN_NAME} Upgrade ({UPGRADE_NAME})
 
-This network upgrade brings the following major changes to Juno Network:
-- GlobalFee Module
-- IBCHooks Module
+[Juno Medium {UPGRADE_NAME} Article](https://medium.com/@JunoNetwork/jun%C3%B8-aurora-ac67a8143e22)
+
+This upgrade brings the following major changes to Juno Network:
+- x/GlobalFee Module
+- x/IBC-Hooks Module
+- 0 Fee IBC Relaying
 - Stargate Staking Queries
 - Tokenfactory: ForceTransfer, MintTo, and BurnFrom (admin only)
 - x/wasmd 0.31
 - wasmvm 1.2.1
+- Skip's mev CometBFT by default
 
 ## x/GlobalFee Module
 
@@ -73,9 +78,23 @@ From the previous upgrade, v13, we added the x/TokenFactory module to deliver a 
 
 Contracts can now query the chain for an accounts: Delegation, Redelegations, and Unbonding information.
 
----
+## Skip MEV by default
 
-[Full {UPGRADE_NAME}.0.0 changelog can be found here](https://github.com/CosmosContracts/juno/releases)
+With the passing of [Juno proposal 275](https://www.mintscan.io/juno/proposals/275), Skip's MEV CometBFT consensus is now used by default.
+
+## Command Line improvements
+
+You can now specify the following configurations for any transaction commands you run:
+- Gas
+- Gas Prices
+- Gas Adjustment
+- Fees
+- Fee-Account
+- Note (memo)
+
+Set these with **junod config fees 5000ujuno** or **junod config gas-prices 0.0025ujuno**.
+
+---
 
 {VOTE_OPTIONS}
 """
