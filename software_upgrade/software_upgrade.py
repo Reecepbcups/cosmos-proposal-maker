@@ -31,9 +31,10 @@ proposal_text = f"""
 # Juno {UPGRADE_HUMAN_NAME} Upgrade ({UPGRADE_NAME})
 
 This upgrade brings the following major changes to Juno Network:
-- New TokenFactory DenomCreationGasConsume parameter
+- New TokenFactory DenomCreationGasConsume parameter (2 million gas consumption to create a new token)
+- Cleanup for the next release (SDK v47)
 
-This change is required for DeFi contract developers for a simpler UX when using the tokenfactory. Specifically, this enables protocols such as ICS-999 to be launched on Juno Network.
+This change is required for DeFi contract developers for a simpler UX when using the tokenfactory in their contracts.
 
 ---
 
