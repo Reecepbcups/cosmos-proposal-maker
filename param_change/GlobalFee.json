@@ -1,12 +1,12 @@
 {
-    "title": "MinimumGasPricesParam Change",
-    "description": "add juno minimum fee",
+    "title": "Increase Network Fees",
+    "description": "# Increase Minimum Gas Prices\n\n[Commonwealth thread](https://commonwealth.im/juno/discussion/11088-param-change-increase-gas-prices)\n\nWith the previous v14 Juno upgrade, Fees are now controlled through governance.\n\nThis proposes we multiply the current gas rates by x3 for ATOM and 30x for JUNO due to current market prices.\n\n*(A slight premium is added to ATOM since JUNO is the native currency of this network.)*\n\n- Current Gas: 0.0025ujuno,0.001uatom\n- New Gas:\t 0.0750ujuno,0.003uatom\n\n---\n\n## Reasons\n\n- Juno's cost per transaction is extremely cheap relative to network activity. The average cost of a transaction with default gas (683,665) is just $0.00146 USD.\n- This increases developers' fee-share revenue 30x. However, contract usage premium will still make up a larger portion of income.\n\n## Notes\n\n- IBC packet relaying cost will remain at 0 costs for relayers & IBC transfers.\n- This will break scripts & MEV bots which have the old gas prices set.\n- Keplr, Leap, and Cosmostation will require an update to their configs for Juno's gas prices.\n- uatom is channel-1 ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9\n- You can verify current fees with 'junod q globalfee minimum-gas-prices'\n\n---\n\n## Technical Analysis\n\n[Indexer/Script used](https://github.com/Reecepbcups/cosmos-indexer/blob/main/scripts/get_all_gas_cost.py). Cut off was block 7,990,650\n\n### Last ~5 million Txs\n\n- Total Txs: 4,998,636\n- Total Gas Spent = 3,417,396,545,806\n- Average gas usage per Tx: 683,665\n- Total ujuno fees paid: 18,520,786,312 = 18,520 $JUNO\n- Average Fees per Tx: 3,705ujuno\n\n### ATOM $10.57\n\n'''\n- Average Gas:  683,665\n- Current Gas:  0.001uatom * 683,665 = 683.665uatom = 0.000683665ATOM * $10.57 = $0.0072 per Tx\n- New Proposal: x3 = gas price of 0.003uatom \n- Fees Per Tx: 2050.995uatom = 0.002050995atom = $0.0217 per Tx\n'''\n\n### JUNO $0.3947\n\n'''\n- Average Gas:  683,665\n- Current Gas: 0.0025ujuno * 683,665 = 1709uatom = 0.001709JUNO*$0.3947 = $0.0006745423\n- New Proposal: x30 = gas price 0.075ujuno \n- Fees Per Tx: 51,274ujuno = 0.0512juno = $0.0202 per Tx\n'''\n\n---\n\n\n## Voting Options\n\nYES: Agree to proceed with increasing the global minimum fee.\n\nNO: Disagree with this increase of the global minimum fee.\n\nNO WITH VETO: Disagree with the increase and want depositors penalized.\n\nABSTAIN: Decline to give an opinion on this increase of gas minimum fees.\n\n",
     "changes": [
       {
         "subspace": "globalfee",
         "key": "MinimumGasPricesParam",
-        "value": [{"denom":"ujuno","amount":"0.002500000000000000"}]
+        "value": [{"denom":"ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9","amount":"0.003000000000000000"},{"denom":"ujuno","amount":"0.075000000000000000"}]
       }
     ],
-    "deposit": "1000000ujuno"
+    "deposit": "200000000ujuno"
 }

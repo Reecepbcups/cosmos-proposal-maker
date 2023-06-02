@@ -10,68 +10,79 @@ Easily make a proposal for a network, shrinking the markdown to a single line fo
 VOTE_OPTIONS = """
 ## Voting Options
 
-YES: Agree to proceed with Juno v14 network upgrade.
+YES: Agree to proceed with increasing the global minimum fee.
 
-NO: Disagree with the Juno v14 network upgrade.
+NO: Disagree with this increase of the global minimum fee.
 
-NO WITH VETO: Disagree with the Juno v14 network upgrade and want depositors penalized.
+NO WITH VETO: Disagree with the increase and want depositors penalized.
 
-ABSTAIN: Decline to give an opinion on the Juno v14 network upgrade.
+ABSTAIN: Decline to give an opinion on this increase of gas minimum fees.
 
 """
 
 proposal_text = f"""
-# Juno v14 Upgrade
+# Increase Minimum Gas Prices
 
-This network upgrade brings the following major changes to Juno Network:
-- GlobalFee Module
-- IBCHooks Module
-- Stargate Staking Queries
-- Tokenfactory: ForceTransfer, MintTo, and BurnFrom (admin only)
-- x/wasmd 0.31
-- wasmvm 1.2.1
+[Commonwealth thread](https://commonwealth.im/juno/discussion/11088-param-change-increase-gas-prices)
 
-## x/GlobalFee Module
+With the previous v14 Juno upgrade, Fees are now controlled through governance.
 
-[Signaling proposal from December 13th, 2022: PASSED](https://www.mintscan.io/juno/proposals/68)
+This proposes we multiply the current gas rates by x3 for ATOM and 30x for JUNO due to current market prices.
 
-Currently on cosmos based chains, the validators are fully in control of the network fees. With this new module, a minimum gas fee is set by governance to set the gas floor.
+*(A slight premium is added to ATOM since JUNO is the native currency of this network.)*
 
-At the upgrade, gas fees are set to our [setup documentation gas prices default](https://docs.junonetwork.io/validators/joining-mainnet#set-minimum-gas-prices):
-- 0.0025ujuno
-- 0.001uatom (ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9)
-
-At any time, governance can increase these fees across the network to help deliver more for developers (through feeshare) and stakers. It can also add new tokens to be accepted as fees, such as OSMO and/or USDC in the future.
-If an transaction attack occurs on Juno, validators are still able to raise their fees ABOVE the minimum gas fee to protect the network as needed.
-
-The only exception to this are bypassed messages for IBC relaying and transfers. These messages are exempt from the minimum gas fee within reasonable limits. For this to work, validators **must** set their fees to be: `0ujuno,0ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9` in their app.toml. No other denoms can be accepted UNLESS governance passes a proposal to do so.
-
-## x/IBCHooks Module
-
-This [module from the osmosis team](https://github.com/osmosis-labs/osmosis/tree/main/x/ibc-hooks) allows for token transfers (of the [ICS-20 spec](https://github.com/cosmos/ibc/tree/main/spec/app/ics-020-fungible-token-transfer) ) to call contracts cross chain. The primary importantance of this is allowing cross chain swaps. 
-
-## x/wasmd 0.31 & wasmv 1.2.1
-
-[Wasmd 0.31 Confio Article](https://medium.com/cosmwasm/wasmd-v0-31-0-released-a2e2ed440148)
-[wasmvm 1.2.1 Confio Article](https://medium.com/cosmwasm/cosmwasm-1-2-5f10f4f653ea)
-
-The main feature from this update which many development teams have requested is instantiate2 to replicate a contract with predictable addresses. You can find an example of this with the [virus contract example](https://github.com/CosmWasm/cosmwasm/tree/v1.2.1/contracts/virus). Some other notable improvements include:
-- Governance based weighted votes
-- new queries from wasmvm 1.2 (add the cosmwasm_1_2 feature in your contract toml)
-- Uint128/Decimal multiplication
-- A new 'Never' type
-
-## New Token Factory Methods
-
-From the previous upgrade, v13, we added the x/TokenFactory module to deliver a better UX for developers and users alike. As the admin of a token denomination you can now Force transfer tokens between accounts, Mint directly to an account, and burn from another account. In the future we will also add support for disabling the sending of tokens, and only allowing minting/burning for specific application needs.
-
-## Stargate Staking Queries
-
-Contracts can now query the chain for an accounts: Delegation, Redelegations, and Unbonding information.
+- Current Gas: 0.0025ujuno,0.001uatom
+- New Gas:     0.0750ujuno,0.003uatom
 
 ---
 
-[Full v14.0.0 changelog can be found here](https://github.com/CosmosContracts/juno/releases)
+## Reasons
+
+- Juno's cost per transaction is extremely cheap relative to network activity. The average cost of a transaction with default gas (683,665) is just $0.00146 USD.
+- This increases developers' fee-share revenue 30x. However, contract usage premium will still make up a larger portion of income.
+
+## Notes
+
+- IBC packet relaying cost will remain at 0 costs for relayers & IBC transfers.
+- This will break scripts & MEV bots which have the old gas prices set.
+- Keplr, Leap, and Cosmostation will require an update to their configs for Juno's gas prices.
+- uatom is channel-1 ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9
+- You can verify current fees with `junod q globalfee minimum-gas-prices --node https://https://rpc.juno.strange.love:443`
+
+---
+
+## Technical Analysis
+
+- [Indexer/Script used](https://github.com/Reecepbcups/cosmos-indexer/blob/main/scripts/get_all_gas_cost.py). Cut off was block 7,990,650
+- [Weekly Tx Fees since Genesis](https://gist.github.com/Reecepbcups/a300c9973bec1de595eb371f9ddc2dd0)
+
+### Last ~5 million Txs
+
+- Total Txs: 4,998,636
+- Total Gas Spent = 3,417,396,545,806
+- Average gas usage per Tx: 683,665
+- Total ujuno fees paid: 18,520,786,312 = 18,520 $JUNO
+- Average Fees per Tx: 3,705ujuno
+
+### ATOM $10.57
+
+```
+- Average Gas:  683,665
+- Current Gas:  0.001uatom * 683,665 = 683.665uatom = 0.000683665ATOM * $10.57 = $0.0072 per Tx
+- New Proposal: x3 = gas price of 0.003uatom 
+- Fees Per Tx: 2050.995uatom = 0.002050995atom = $0.0217 per Tx
+```
+
+### JUNO $0.3947
+
+```
+- Average Gas:  683,665
+- Current Gas: 0.0025ujuno * 683,665 = 1709uatom = 0.001709JUNO*$0.3947 = $0.0006745423
+- New Proposal: x30 = gas price 0.075ujuno 
+- Fees Per Tx: 51,274ujuno = 0.0512juno = $0.0202 per Tx
+```
+
+---
 
 {VOTE_OPTIONS}
 """
