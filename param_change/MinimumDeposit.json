@@ -1,0 +1,12 @@
+{
+    "title": "Increase governance deposit to 5000JUNO",
+    "description": "## Increase Juno's Deposit Minimum\n\n[Commonwealth Thread](https://commonwealth.im/juno/discussion/11579-increase-governance-deposit-to-5000juno)\n\nWith the decline in JUNO's price the past few months, we have seen an uptick in scam proposals making it to voting period. With this, this proposal will update Juno's current governance deposit from 1000JUNO to 5000JUNO if passed.\nCurrently this includes: 296, 298, 299, 300, 301, 302, 303. All of these are used to phish for users wallet mnemonics and drain their personal funds. \n\nBy increasing this, it increases the cost of the attack which makes it unprofitable to execute on.\nThe minimum deposit rate to enter deposit period will remain at the same at 20%, which would now be 1000 JUNO.\n\nIf you do not have enough Juno to make a proposal, you can reach out to a Core-1, Core-2, or SubDAO to help get your proposal live.\n\n\n---\n\n\n## Voting Options\n\nYES: Agree to proceed with increasing the minimum deposit.\n\nNO: Disagree with this increase of the minimum deposit.\n\nNO WITH VETO: Disagree with the increase and want depositors penalized.\n\nABSTAIN: Decline to give an opinion on this increase of the minimum deposit.\n\n",
+    "changes": [
+      {
+        "subspace": "gov",
+        "key": "depositparams",
+        "value": { "min_deposit": [ { "denom": "ujuno", "amount": "5000000000" } ] }
+      }
+    ],
+    "deposit": "200000000ujuno"
+}
