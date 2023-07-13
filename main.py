@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Reece Williams (reece.sh) | 2023
 Easily make a proposal for a network, shrinking the markdown to a single line for the description.

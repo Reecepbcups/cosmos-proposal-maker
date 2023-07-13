@@ -1,3 +1,5 @@
+# flake8: noqa
+
 """
 A copy from the main.py so I don't have to change it all the time
 
@@ -9,19 +11,19 @@ Easily make a proposal for a network, shrinking the markdown to a single line fo
 
 # =====
 
-UPGRADE_NAME = "v15"
-UPGRADE_HUMAN_NAME = "TokenFactory"
+UPGRADE_NAME = "v16"
+UPGRADE_HUMAN_NAME = "Latest"
 
 VOTE_OPTIONS = f"""
 ## Voting Options
 
-YES: Agree to proceed with Juno {UPGRADE_NAME} network upgrade.
+YES: Agree to proceed with the {UPGRADE_NAME} network upgrade.
 
-NO: Disagree with the Juno {UPGRADE_NAME} network upgrade.
+NO: Disagree with the {UPGRADE_NAME} network upgrade.
 
-NO WITH VETO: Disagree with the Juno {UPGRADE_NAME} network upgrade and want depositors penalized.
+NO WITH VETO: Disagree with the {UPGRADE_NAME} network upgrade and want depositors penalized.
 
-ABSTAIN: Decline to give an opinion on the Juno {UPGRADE_NAME} network upgrade.
+ABSTAIN: Decline to give an opinion on the {UPGRADE_NAME} network upgrade.
 
 """
 
@@ -31,10 +33,15 @@ proposal_text = f"""
 # Juno {UPGRADE_HUMAN_NAME} Upgrade ({UPGRADE_NAME})
 
 This upgrade brings the following major changes to Juno Network:
-- New TokenFactory DenomCreationGasConsume parameter (2 million gas consumption to create a new token)
-- Cleanup for the next release (SDK v47)
+- Migrates Juno's entire codebase to SDK v47 & CometBFT v0.37
+- Adds Interchain Queries & Skip's MEV Builder (x/POB).
+- Adds x/NFT module.
+- Adds the 09-localhost IBC client.
+- Governance-controlled smart contracts can now register for FeeShare.
 
-This change is required for DeFi contract developers for a simpler UX when using the tokenfactory in their contracts.
+[Release Notes](https://github.com/CosmosContracts/juno/releases/tag/v16.0.0-alpha.1)
+
+[Full Change Log](https://github.com/CosmosContracts/juno/compare/v15.0.0...v16.0.0-alpha.1)
 
 ---
 
