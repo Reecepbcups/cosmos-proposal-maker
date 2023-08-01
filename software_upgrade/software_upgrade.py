@@ -35,8 +35,8 @@ proposal_text = f"""
 [{UPGRADE_HUMAN_NAME} Article](https://medium.com/@JunoNetwork/pioneering-continues-a-status-update-on-the-upcoming-upgrade-invictus-29ce631cf99f)
 
 This upgrade brings the following major changes to Juno Network:
-- Migrates Juno's entire codebase to SDK v47 & CometBFT v0.37
-- Adds Async Interchain Queries
+- Migrates Juno's entire codebase to SDK v47 & CometBFT v0.37.
+- Adds Async Interchain Queries.
 - Adds Skip's protocol-owned MEV builder (x/POB).
 - Adds x/NFT module.
 - Brings GlobalFee & TokenFactory into the core repository.
@@ -44,10 +44,10 @@ This upgrade brings the following major changes to Juno Network:
 
 Other:
 - Migrates all params from deprecated x/params to standalone keepers.
-- `DelegationRewards` stargate query now accessible
-- TokenAFactory denoms now follow x/bank denom specs (metadata)
-- Testing every module in the codebase (including upstream)
-- General cleanup
+- `DelegationRewards` stargate query now accessible.
+- TokenFactory denoms now follow x/bank denom specs (metadata).
+- Testing of every module in the codebase (including upstream).
+- General cleanup.
 
 [Release Notes](https://github.com/CosmosContracts/juno/releases/tag/v16.0.0)
 
