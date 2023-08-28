@@ -11,8 +11,8 @@ Easily make a proposal for a network, shrinking the markdown to a single line fo
 
 # =====
 
-UPGRADE_NAME = "v16"
-UPGRADE_HUMAN_NAME = "Invictus"
+UPGRADE_NAME = "v17"
+UPGRADE_HUMAN_NAME = "Vesta"
 
 VOTE_OPTIONS = f"""
 ## Voting Options
@@ -35,23 +35,17 @@ proposal_text = f"""
 [{UPGRADE_HUMAN_NAME} Article](https://medium.com/@JunoNetwork/pioneering-continues-a-status-update-on-the-upcoming-upgrade-invictus-29ce631cf99f)
 
 This upgrade brings the following major changes to Juno Network:
-- Migrates Juno's entire codebase to SDK v47 & CometBFT v0.37.
-- Adds Async Interchain Queries.
-- Adds Skip's protocol-owned MEV builder (x/POB).
-- Adds x/NFT module.
-- Brings GlobalFee & TokenFactory into the core repository.
-- Governance-controlled smart contracts can now register for FeeShare.
+- x/drip module (single block stake weighted airdrop for all delegators).
+- x/clock module (Allow smart contracts to 'tick' every end block)
+- 3 second block times (down from 6 seconds).
 
 Other:
-- Migrates all params from deprecated x/params to standalone keepers.
-- `DelegationRewards` stargate query now accessible.
-- TokenFactory denoms now follow x/bank denom specs (metadata).
-- Testing of every module in the codebase (including upstream).
-- General cleanup.
+- DAODAO can now natively register contracts with FeeShare if it is the admin or creator.
+- We now bypass IBC transactions up to 2M gas (from 1 million) due to the use of TFM with PFM & IBC Hooks.
 
-[Release Notes](https://github.com/CosmosContracts/juno/releases/tag/v16.0.0)
+[Release Notes](https://github.com/CosmosContracts/juno/releases/tag/v17.0.0-alpha.1)
 
-[Full Change Log](https://github.com/CosmosContracts/juno/compare/v15.0.0...v16.0.0)
+[Full Change Log](https://github.com/CosmosContracts/juno/compare/v16.0.0...v17.0.0-alpha.1)
 
 ---
 

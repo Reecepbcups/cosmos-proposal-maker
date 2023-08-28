@@ -1,15 +1,15 @@
 from datetime import datetime, timezone
 
 # https://www.mintscan.io/juno/blocks
-CURRENT_BLOCK = 9393861
+CURRENT_BLOCK = 2998532
 
 # Get a future block from mintscan
 # -> https://testnet.mintscan.io/juno-testnet/blocks/999999999
-AVERAGE_BLOCK_TIME = 6.0343
+AVERAGE_BLOCK_TIME = 5.9386
 
 CURRENT_TIME = datetime.now(timezone.utc)
 
-PLANNED_RELEASE_DATE = "2023-aug-7"
+PLANNED_RELEASE_DATE = "2023-aug-31"
 PLANNED_UTC_TIME = "16:00:00"
 PLANNED_TIME = datetime.strptime(
     f"{PLANNED_RELEASE_DATE} {PLANNED_UTC_TIME}", "%Y-%b-%d %H:%M:%S"
