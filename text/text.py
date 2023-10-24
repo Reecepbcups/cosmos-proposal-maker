@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Reece Williams (reece.sh) | 2023
 Easily make a proposal for a network, shrinking the markdown to a single line for the description.
@@ -8,35 +9,28 @@ Easily make a proposal for a network, shrinking the markdown to a single line fo
 VOTE_OPTIONS = """
 ## Voting Options
 
-YES: Agree to proceed with using Skip Tenmdermint by default.
+**YES**: Agree to a future upgrade to set all validators max change rate to be no more than 5%.
 
-NO: Disagree with using Skip Tenmdermint by default.
+**NO**: Disagree to a future upgrade to set all validators max change rate to be no more than 5%.
 
-NO WITH VETO: Disagree with using Skip Tenmdermint by default and want depositors penalized.
+**NO WITH VETO**: Disagree with the proposal and want depositors penalized.
 
-ABSTAIN: Decline to give an opinion on using Skip Tenmdermint by default.
+**ABSTAIN**: Decline to give an opinion on this proposal.
 
 """
 
 proposal_text = f"""
-# Skip Tendermint By Default in Juno
+# Set Validator Max Commission Change Rate To 5%
 
-[Commonwealth Discussion](https://commonwealth.im/juno/discussion/10223-use-skip-by-default)
+[Commonwealth Thread](https://commonwealth.im/juno/discussion/12035-set-validator-max-commission-change-rate-up-to-5)
 
-Juno has the highest adoption of [Skip](https://skip.money/) in Cosmos. To simplify validator operations, this proposal, if passed, signals for the Juno binary use Skip by default. This approach has been tested by Notional while comparing Tendermint and comet, and there is no operational difference.
+In reference to the recent event on Cosmos Hub, where a validator has increased their commission rate by 99.35% in a single transaction, a safe hard limit on max commission change rate should be set for all validators as good practice to protect delegators.
 
-Using Skip by default does not require validators to use Skip (opt-in), it purely just uses their implementation by default for validators who do use Skip. Each validator will still have the option to use skip or not, as they choose.
+This proposal is signaling a future upgrade to set all validators max change rate (within a 24 hour period) to be no more than 5% if currently set above.
 
----
+This would not affect the minimum nor maximum commission rate limits, rather ensures that network validators would not be able to increase their commission rate by more than 5% within 24 hours.
 
-## Will other MEV providers be considered?
-
-Right now, Skip MEV is the leading MEV provider in Cosmos. If another provider comes up and validators decide to switch to it, governance can always be used to change to the new MEV provider by default. This is more of a QOL addition for validators, which just ensures those who use it have it pre-installed during upgrades. Validators can continue to use other MEV solutions if they choose.
-
-## How will this MEV build be integrated into the Juno codebase?
-
-It will be replaced in the go.mod from standard Tendermint to Skip's version. You can find [a PR of this here](https://github.com/CosmosContracts/juno/pull/587).
-
+*(This means for a validator to go from 5% to 100% commission, it would take 19 days.)*
 
 {VOTE_OPTIONS}
 """
