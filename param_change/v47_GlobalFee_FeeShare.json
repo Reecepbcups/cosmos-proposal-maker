@@ -1,0 +1,33 @@
+{
+ "messages": [
+  {
+   "@type": "/juno.feeshare.v1.MsgUpdateParams",
+   "authority": "juno10d07y265gmmuvt4z0w9aw880jnsr700jvss730",
+   "params": {
+    "enable_fee_share": true,
+    "developer_shares": "0.500000000000000000",
+    "allowed_denoms": [
+      "ibc/4A482FA914A4B9B05801ED81C33713899F322B24F76A06F4B8FE872485EA22FF",
+      "ibc/EAC38D55372F38F1AFD68DF7FE9EF762DCF69F26520643CF3F9D292A738D8034",
+      "ujuno"
+    ]
+   }
+  },
+  {
+    "@type": "/gaia.globalfee.v1beta1.MsgUpdateParams",
+    "authority": "juno10d07y265gmmuvt4z0w9aw880jnsr700jvss730",
+    "params": {
+     "minimum_gas_prices": [
+       {"denom":"ibc/4A482FA914A4B9B05801ED81C33713899F322B24F76A06F4B8FE872485EA22FF","amount":"0.025000000000000000"},
+        {"denom":"ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9","amount":"0.003000000000000000"},
+        {"denom":"ibc/EAC38D55372F38F1AFD68DF7FE9EF762DCF69F26520643CF3F9D292A738D8034","amount":"0.025000000000000000"},
+        {"denom":"ujuno","amount":"0.075000000000000000"}
+     ]
+    }
+   }
+ ],
+ "metadata": "Add Noble channel-224 & Axelar channel-71 to GlobalFee and FeeShare",
+ "deposit": "1000000ujuno",
+ "title": "Add Noble & Axelar USDC to Fees + FeeShare",
+ "summary": "Add Noble channel-224 & Axelar channel-71 to GlobalFee and FeeShare @ a 0.025 gas price"
+}
