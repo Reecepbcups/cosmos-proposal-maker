@@ -2,10 +2,15 @@
 
 JUNOD_NODE="http://localhost:26657"
 
-junod tx gov submit-proposal /home/reece/Desktop/Programming/Python/cosmos-proposal-maker/param_change/v47_GlobalFee_FeeShare.json --gas=500000 --from=juno1 --home=$HOME/.juno1/ --fees=10000ujuno --keyring-backend=test --chain-id=local-1 --node=http://localhost:26657 --yes
+junod tx gov submit-proposal /home/reece/Desktop/Programming/Python/cosmos-proposal-maker/param_change/v47-POB.json --gas=500000 --from=juno1 --home=$HOME/.juno1/ --fees=10000ujuno --keyring-backend=test --chain-id=local-1 --node=http://localhost:26657 --yes
+
+# deposit 1000000 ujuno
+junod tx gov deposit 1 1000000ujuno --from=juno1 --home=$HOME/.juno1/ --fees=10000ujuno --keyring-backend=test --chain-id=local-1 --node=http://localhost:26657 --yes
 
 junod tx gov vote 1 yes --from=juno1 --home=$HOME/.juno1/ --fees=10000ujuno --keyring-backend=test --chain-id=local-1 --node=http://localhost:26657 --yes
 
+
+junod q gov proposal 1
 
 # testing the above
 # JUNOD_NODE="http://localhost:26657"
