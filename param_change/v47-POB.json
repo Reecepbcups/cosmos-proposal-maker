@@ -19,8 +19,8 @@
    }
   }
  ],
- "metadata": "ipfs://CID",
- "deposit": "500ujuno",
- "title": "Enable Frontrunning protection",
- "summary": "A previous upgrade introduced Skip's POB (Builder) MEV Module. In it, we forgot to enable frontrunning protection. This proposal enables frontrunning protection. (Credit to Yieldmos and Signal for the discovery)"
+ "metadata": "",
+ "deposit": "5000000000ujuno",
+ "title": "Enable MEV Frontrunning protection",
+ "summary": "The [v16 upgrade](https://github.com/CosmosContracts/juno/releases/tag/v16.0.0) introduced Skip's Builder Module (x/POB). In the upgrade, we set frontrunning protection to disabled.\nThis proposal enables frontrunning protection as was intended from the original upgrade plan.\n(Credit to Yieldmos and Signal for the discovery)"
 }

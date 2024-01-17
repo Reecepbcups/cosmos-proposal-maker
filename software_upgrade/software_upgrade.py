@@ -11,8 +11,8 @@ Easily make a proposal for a network, shrinking the markdown to a single line fo
 
 # =====
 
-UPGRADE_NAME = "v18"
-UPGRADE_HUMAN_NAME = "Epona"
+UPGRADE_NAME = "v19"
+UPGRADE_HUMAN_NAME = "Rhea"
 
 VOTE_OPTIONS = f"""
 ## Voting Options
@@ -27,7 +27,13 @@ NO: Disagree with the {UPGRADE_NAME} network upgrade.
 proposal_text = f"""
 # Juno {UPGRADE_HUMAN_NAME} Upgrade ({UPGRADE_NAME})
 
-[Release Notes](https://github.com/CosmosContracts/juno/releases/tag/v18.0.0)
+- Enforce Validator's Max 24 Hour Change Rate To 5%
+- Permissionless x/clock registration
+- IBC 08-Wasm Light Client (Polkadot<->Juno)
+- Migrate Core-1 Multisig funds to Charter Council per Prop
+- Fixes CosmWasm Memory Leak
+
+[Github Release](https://github.com/CosmosContracts/juno/releases/tag/v19.0.0-alpha.1)
 
 ---
 
