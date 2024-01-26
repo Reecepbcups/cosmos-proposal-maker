@@ -11,7 +11,7 @@ Easily make a proposal for a network, shrinking the markdown to a single line fo
 
 # =====
 
-UPGRADE_NAME = "v19"
+UPGRADE_NAME = "v1900alpha3"
 UPGRADE_HUMAN_NAME = "Rhea"
 
 VOTE_OPTIONS = f"""
@@ -33,7 +33,7 @@ proposal_text = f"""
 - Migrate Core-1 Multisig funds to Charter Council per Prop
 - Fixes CosmWasm Memory Leak
 
-[Github Release](https://github.com/CosmosContracts/juno/releases/tag/v19.0.0-alpha.1)
+[Github Release](https://github.com/CosmosContracts/juno/releases/tag/v19.0.0-alpha.3)
 
 ---
 
